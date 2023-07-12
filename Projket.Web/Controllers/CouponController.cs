@@ -24,6 +24,10 @@ namespace Projket.Web.Controllers
             {
                 list = JsonConvert.DeserializeObject<List<CouponDto>>(Convert.ToString(response.Result));
             }
+            else
+            {
+                TempData["error"] = response?.Message;
+            }
 
             return View(list);
         }
@@ -42,7 +46,12 @@ namespace Projket.Web.Controllers
 
                 if (response != null && response.IsSuccess)
                 {
+                    TempData["success"] = "Coupon created successfuly";
                     return RedirectToAction(nameof(CouponIndex));
+                }
+                else
+                {
+                    TempData["error"] = response?.Message;
                 }
             }
             return View(model);
@@ -57,6 +66,10 @@ namespace Projket.Web.Controllers
                 CouponDto? model = JsonConvert.DeserializeObject<CouponDto>(Convert.ToString(response.Result));
                 return View(model);
             }
+            else
+            {
+                TempData["error"] = response?.Message;
+            }
             return NotFound();
         }
 
@@ -69,6 +82,11 @@ namespace Projket.Web.Controllers
             {
                 return RedirectToAction(nameof(CouponIndex));
             }
+            else
+            {
+                TempData["error"] = response?.Message;
+            }
+
             return View(couponDto);
         }
     }
