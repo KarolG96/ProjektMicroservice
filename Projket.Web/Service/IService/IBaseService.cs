@@ -1,6 +1,10 @@
-﻿namespace Projket.Web.Service.IService
+﻿using Projekt.Web.Models;
+using Projket.Web.Models;
+
+namespace Projket.Web.Service.IService
 {
-    public class IBaseService
+    public interface IBaseService
     {
+        Task<ResponseDto?> SendAsync(RequestDto requestDto);
     }
 }
