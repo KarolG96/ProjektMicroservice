@@ -7,7 +7,7 @@ using Projekt.Services.CouponAPI.Models.Dto;
 
 namespace Projekt.Services.CouponAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/coupon")]
     [ApiController]
     public class CouponAPIController : ControllerBase
     {
@@ -115,6 +115,7 @@ namespace Projekt.Services.CouponAPI.Controllers
         }
 
         [HttpDelete]
+        [Route("{id:int}")]
         public ResponseDto Delete(int id)
         {
             try
